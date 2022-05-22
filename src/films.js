@@ -87,12 +87,12 @@ function orderAlphabetically(array) {
     // Los títulos son iguales
     return 0;
   });
- 
-   //Tomar los 20 primeros
-  pelis_20 = pelis.slice(0, 20); 
+
+  //Tomar los 20 primeros
+  pelis_20 = pelis.slice(0, 20);
 
   //Crear un array 'titulos' con los titulos de pelis
-  titulos = pelis_20.map(peliculas => peliculas.title); 
+  titulos = pelis_20.map(peliculas => peliculas.title);
   return titulos;
 }
 
@@ -102,9 +102,39 @@ function orderAlphabetically(array) {
 
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
+function orderByYear(array) {
+  let pelis = array.map((x) => x);  // Clonar el array (1=>1)
+
+  // .sort() Ordenar según lo devuelto por fuction()
+  pelis.sort(function (a, b) {
+    var peliA = a.year;
+    var peliB = b.year;
+    if (peliA < peliB) {
+      return -1;
+    }
+    if (peliA > peliB) {
+      return 1;
+    }
+    // Mismo año, ordenar por titulo 
+    peliA = a.title.toUpperCase();
+    peliB = b.title.toUpperCase();
+    if (peliA < peliB) {
+      return -1;
+    }
+    if (peliA > peliB) {
+      return 1;
+    }
+    // Los años y títulos son iguales
+    return 0;
+  });
+
+  return (pelis);
 
 }
+
+
+
+
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {
