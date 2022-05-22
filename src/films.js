@@ -1,5 +1,4 @@
 // Exercise 1: Get the array of all directors.
-
 /*
 array.map() Devuelve un nuevo array que contiene el resultado de ejecutar cada elemento a través 
 de la función pasada al map
@@ -33,33 +32,31 @@ function getMoviesFromDirector(array, director) {
 
 // Exercise 3: Calculate the average of the films of a given director.
 /*
-.reduce() ?
+.filter()
 Per a això, hauràs d'implementar la funció moviesAverage(), 
 la qual rep un array de pel·lícules i retorna la nota mitjana, amb dos decimals.
 */
 function moviesAverageOfDirector(array, director) {
-  var suma = 0;
-  var conta = 0;
-  var result = 0;
-
-  array.forEach(function (pelicula) {
-    if (pelicula.director == director) {
-      suma = suma + pelicula.score;
-      conta++;
-    }
-  });
-
-  result = (suma / conta).toFixed(2);
-  result = parseFloat(result);        // toFixed() lo convierte a String
-
-  console.log(`suma:${suma}`);
-  console.log(`conta:${conta}`);
-  console.log("EXERCICE 3 ->", result);
-
-  console.log(typeof result);
+  let pelisDirector = array.filter(n => n.director == director);
+  result = moviesAverage(pelisDirector);
 
   return result;
 
+}
+
+function moviesAverage(pelis) {
+  // Devuelve un float con la puntiación media de un array de películas
+  let suma = 0;
+  let long = pelis.length;
+  if (!long) return 0;
+  pelis.forEach(function (pelicula) {
+    suma = suma + pelicula.score;
+    if (!pelicula.score) long--;  // No tener en cuenta esta peli
+  });
+  let result = (suma / long).toFixed(2);
+  result = parseFloat(result);        // parseFloat porque toFixed() lo convierte a String
+  //console.log(result);
+  return (result);
 }
 
 
@@ -124,7 +121,7 @@ function orderByYear(array) {
     if (peliA > peliB) {
       return 1;
     }
-    // Los años y títulos son iguales
+    // Los años y títulos son iguales, no cambia
     return 0;
   });
 
@@ -137,9 +134,19 @@ function orderByYear(array) {
 
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+// usar  Exercise 3: moviesAverage()
+function moviesAverageByCategory(array, categoria) {
+  let result = 0;
+  let peliculas = array.filter(x => x.genre.includes(categoria));
+  if (!peliculas) return (0);
+  // console.log(peliculas);
 
+  result = moviesAverage(peliculas);
+  return (result);
 }
+
+
+
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {
