@@ -39,10 +39,19 @@ console.log(typeof result);
 */
 
 
-// Ejercicio 7
+
+// Ejercicio 7 
 const auxArr = [{ duration: '2h' }];
 
 let result = hoursToMinutes(movies);
 console.log(`Ejercicio 7: `);
 console.log(result);
-console.log(typeof result.duration);
+console.log(typeof result[0].duration);
+
+
+// Ejercicio 8
+/*
+let result = bestFilmOfYear(movies,2010);
+console.log(`Ejercicio 8: `);
+console.log(result);
+*/
