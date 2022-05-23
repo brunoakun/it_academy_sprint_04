@@ -160,11 +160,12 @@ function hoursToMinutes(movies) {
     minutos = parseInt(auxArray[1]);
     if (auxArray.length == 1) minutos = 0;    // Solo hay horas, no minutos
     //console.log(`pelicula.duration: ${pelicula.duration} horas: ${horas} minutos: ${minutos}`);
-    let duration_22 = parseInt((horas * 60) + minutos);
+    let tiempoPeli = parseInt((horas * 60) + minutos);
+
 
     return {
       ...pelicula,
-      duration: duration_22
+      duration: tiempoPeli
     };
   });
 
