@@ -31,7 +31,18 @@ console.log(typeof result);
 
 
 // Ejercicio 6 - .map() 
+/*
 let result = moviesAverageByCategory(movies, 'Sci-Fi');
 console.log(`Ejercicio 6  moviesAverageByCategory: `);
 console.log(result);
 console.log(typeof result);
+*/
+
+
+// Ejercicio 7
+const auxArr = [{ duration: '2h' }];
+
+let result = hoursToMinutes(movies);
+console.log(`Ejercicio 7: `);
+console.log(result);
+console.log(typeof result.duration);

@@ -66,7 +66,6 @@ function moviesAverage(pelis) {
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
-
   let pelis = array.map((x) => x);  // Clonar el array (1=>1)
   let pelis_20 = [];
   let titulos = [];
@@ -149,7 +148,25 @@ function moviesAverageByCategory(array, categoria) {
 
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {
+
+  let pelisList = array.map((x) => x);  // Clonar el array (1=>1)
+  let horas = 0;
+  let minutos = 0;
+  let auxArray = [];
+
+  let result = pelisList.map(function (pelicula) {
+    auxArray = pelicula.duration.split(" ");
+    horas = parseInt(auxArray[0]);
+    minutos = parseInt(auxArray[1]);
+    if (auxArray.length == 1) minutos = 0;    // Solo hay horas, no minutos
+    //console.log(`pelicula.duration: ${pelicula.duration} horas: ${horas} minutos: ${minutos}`);
+    pelicula.duration = parseInt((horas * 60) + minutos);
+
+    return (pelicula);
+  });
+
+  return result;
 
 }
 
